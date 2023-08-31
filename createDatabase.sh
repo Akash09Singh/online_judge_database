@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Start MySQL service
@@ -23,5 +24,4 @@ SQL_SCRIPT="backup.sql"
 # Execute the SQL script to create the database
 mysql -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD < $SQL_SCRIPT
 
-# Keep the script running to keep the container alive
-tail -f /dev/null
+sleep 60
