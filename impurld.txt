@@ -1,2 +1,0 @@
-backend: https://github.com/Akash09Singh/online_judge_backend.git
-backend url : https://online-judge-backend.onrender.com
