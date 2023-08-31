@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Start MySQL service
-service mysql start
+# Explicitly start the MySQL daemon in the foreground
+mysqld --user=mysql --console &
+MYSQL_PID=$!
 
 # Wait for MySQL service to start
 until mysqladmin ping -h localhost --silent; do
@@ -23,3 +24,5 @@ SQL_SCRIPT="backup.sql"
 # Execute the SQL script to create the database
 mysql -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD < $SQL_SCRIPT
 
+# Clean up and stop the MySQL daemon
+kill $MYSQL_PID
