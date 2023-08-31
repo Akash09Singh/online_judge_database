@@ -9,11 +9,19 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
+RUN sudo apt-get install chown
+
+RUN export PATH=$PATH:/usr/bin
+
 # Expose the default MySQL port
 EXPOSE 3306
 
 # Copy the SQL script
 COPY . /usr/src/myapp
+
+RUN chown mysql:mysql /proc
+
+RUN mount proc /proc
 
 # Set the working directory
 WORKDIR /usr/src/myapp
