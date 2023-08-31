@@ -1,0 +1,5 @@
+services:
+  - name: online-judge-database
+    image: database:latest
+    ports:
+      - 3306
